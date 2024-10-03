@@ -4,8 +4,89 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "615bfcd5d86ca3335115e32e78af34b3",
+    "content-hash": "72788aacc54d2633ec8bb13a3c91fc37",
     "packages": [
+        {
+            "name": "blade-ui-kit/blade-icons",
+            "version": "1.7.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/blade-ui-kit/blade-icons.git",
+                "reference": "8f787baf09d88cdfd6ec4dbaba11ebfa885f0595"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/blade-ui-kit/blade-icons/zipball/8f787baf09d88cdfd6ec4dbaba11ebfa885f0595",
+                "reference": "8f787baf09d88cdfd6ec4dbaba11ebfa885f0595",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^8.0|^9.0|^10.0|^11.0",
+                "illuminate/filesystem": "^8.0|^9.0|^10.0|^11.0",
+                "illuminate/support": "^8.0|^9.0|^10.0|^11.0",
+                "illuminate/view": "^8.0|^9.0|^10.0|^11.0",
+                "php": "^7.4|^8.0",
+                "symfony/console": "^5.3|^6.0|^7.0",
+                "symfony/finder": "^5.3|^6.0|^7.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.5.1",
+                "orchestra/testbench": "^6.0|^7.0|^8.0|^9.0",
+                "phpunit/phpunit": "^9.0|^10.5|^11.0"
+            },
+            "bin": [
+                "bin/blade-icons-generate"
+            ],
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "BladeUI\\Icons\\BladeIconsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "BladeUI\\Icons\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dries Vints",
+                    "homepage": "https://driesvints.com"
+                }
+            ],
+            "description": "A package to easily make use of icons in your Laravel Blade views.",
+            "homepage": "https://github.com/blade-ui-kit/blade-icons",
+            "keywords": [
+                "blade",
+                "icons",
+                "laravel",
+                "svg"
+            ],
+            "support": {
+                "issues": "https://github.com/blade-ui-kit/blade-icons/issues",
+                "source": "https://github.com/blade-ui-kit/blade-icons"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/driesvints",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.paypal.com/paypalme/driesvints",
+                    "type": "paypal"
+                }
+            ],
+            "time": "2024-08-14T14:25:11+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.12.1",
@@ -1886,16 +1967,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v3.5.8",
+            "version": "v3.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "ce1ce71b39a3492b98f7d2f2a4583f1b163fe6ae"
+                "reference": "5c659ce15c157c2b320ad0ba5f5b828ddc6fa245"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/ce1ce71b39a3492b98f7d2f2a4583f1b163fe6ae",
-                "reference": "ce1ce71b39a3492b98f7d2f2a4583f1b163fe6ae",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/5c659ce15c157c2b320ad0ba5f5b828ddc6fa245",
+                "reference": "5c659ce15c157c2b320ad0ba5f5b828ddc6fa245",
                 "shasum": ""
             },
             "require": {
@@ -1903,18 +1984,17 @@
                 "illuminate/routing": "^10.0|^11.0",
                 "illuminate/support": "^10.0|^11.0",
                 "illuminate/validation": "^10.0|^11.0",
-                "laravel/prompts": "^0.1.24",
                 "league/mime-type-detection": "^1.9",
                 "php": "^8.1",
-                "symfony/console": "^6.0|^7.0",
                 "symfony/http-kernel": "^6.2|^7.0"
             },
             "require-dev": {
                 "calebporzio/sushi": "^2.1",
-                "laravel/framework": "^10.15.0|^11.0",
+                "laravel/framework": "^10.0|^11.0",
+                "laravel/prompts": "^0.1.6",
                 "mockery/mockery": "^1.3.1",
-                "orchestra/testbench": "^8.21.0|^9.0",
-                "orchestra/testbench-dusk": "^8.24|^9.1",
+                "orchestra/testbench": "8.20.0|^9.0",
+                "orchestra/testbench-dusk": "8.20.0|^9.0",
                 "phpunit/phpunit": "^10.4",
                 "psy/psysh": "^0.11.22|^0.12"
             },
@@ -1950,7 +2030,7 @@
             "description": "A front-end framework for Laravel.",
             "support": {
                 "issues": "https://github.com/livewire/livewire/issues",
-                "source": "https://github.com/livewire/livewire/tree/v3.5.8"
+                "source": "https://github.com/livewire/livewire/tree/v3.4.0"
             },
             "funding": [
                 {
@@ -1958,7 +2038,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-09-20T19:41:19+00:00"
+            "time": "2024-01-23T15:22:18+00:00"
         },
         {
             "name": "livewire/volt",
@@ -3322,6 +3402,88 @@
                 }
             ],
             "time": "2024-04-27T21:32:50+00:00"
+        },
+        {
+            "name": "spatie/laravel-permission",
+            "version": "6.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-permission.git",
+                "reference": "fe973a58b44380d0e8620107259b7bda22f70408"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/fe973a58b44380d0e8620107259b7bda22f70408",
+                "reference": "fe973a58b44380d0e8620107259b7bda22f70408",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/auth": "^8.12|^9.0|^10.0|^11.0",
+                "illuminate/container": "^8.12|^9.0|^10.0|^11.0",
+                "illuminate/contracts": "^8.12|^9.0|^10.0|^11.0",
+                "illuminate/database": "^8.12|^9.0|^10.0|^11.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "laravel/passport": "^11.0|^12.0",
+                "orchestra/testbench": "^6.23|^7.0|^8.0|^9.0",
+                "phpunit/phpunit": "^9.4|^10.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "6.x-dev",
+                    "dev-master": "6.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Spatie\\Permission\\PermissionServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Spatie\\Permission\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Permission handling for Laravel 8.0 and up",
+            "homepage": "https://github.com/spatie/laravel-permission",
+            "keywords": [
+                "acl",
+                "laravel",
+                "permission",
+                "permissions",
+                "rbac",
+                "roles",
+                "security",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-permission/issues",
+                "source": "https://github.com/spatie/laravel-permission/tree/6.9.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-06-22T23:04:52+00:00"
         },
         {
             "name": "symfony/console",

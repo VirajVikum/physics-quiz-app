@@ -29,7 +29,11 @@ new #[Layout('layouts.guest')] class extends Component
 
         $validated['password'] = Hash::make($validated['password']);
 
+        $validated['user_type_id'] = 3;
+
         event(new Registered($user = User::create($validated)));
+
+        $user->assignRole('client');
 
         Auth::login($user);
 
