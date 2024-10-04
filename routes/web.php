@@ -1,5 +1,9 @@
 <?php
 
+use App\Livewire\Admin\QuestionCategories\Index as Qcategories;
+use App\Livewire\Admin\QuestionLevels\Index as Qlevels;
+use App\Livewire\Admin\Questions\Index as QuestionIndex;
+use App\Livewire\Admin\Users\Index as UserIndex;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +28,11 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 require __DIR__.'/auth.php';
+
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/users', UserIndex::class,)->name('user-index');
+    Route::get('/questions', QuestionIndex::class,)->name('question-index');
+    Route::get('/categories', Qcategories::class,)->name('question-categories');
+    Route::get('/levels', Qlevels::class,)->name('question-levels');
+});

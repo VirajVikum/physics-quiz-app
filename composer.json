@@ -11,9 +11,10 @@
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
-        "livewire/livewire": "3.4",
         "livewire/volt": "^1.0",
-        "spatie/laravel-permission": "^6.9"
+        "power-components/livewire-powergrid": "^6.0",
+        "spatie/laravel-permission": "^6.9",
+        "wire-elements/modal": "^2.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

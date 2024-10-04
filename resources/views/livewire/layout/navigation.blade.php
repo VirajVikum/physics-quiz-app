@@ -34,6 +34,18 @@ new class extends Component
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.user-index')" :active="request()->routeIs('admin.user-index')" wire:navigate>
+                        {{ __('Users') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.question-index')" :active="request()->routeIs('admin.question-index')" wire:navigate>
+                        {{ __('Questions') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.question-categories')" :active="request()->routeIs('admin.question-categories')" wire:navigate>
+                        {{ __('Q-Categories') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('admin.question-levels')" :active="request()->routeIs('admin.question-levels')" wire:navigate>
+                        {{ __('Q-Levels') }}
+                    </x-nav-link>
                     @endrole
 
                     @role('client')
