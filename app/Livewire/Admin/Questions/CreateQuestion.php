@@ -59,7 +59,17 @@ class CreateQuestion extends ModalComponent
 
         $validatedData = $this->validate();
         $question = Question::findOrFail($this->questionId);
-        $question->update($validatedData);
+        $question->update([
+            'question' => $this->question,
+            'option1' =>  $this->option1,
+            'option2' =>  $this->option2,
+            'option3' =>  $this->option3,
+            'option4' =>  $this->option4,
+            'option5' =>  $this->option5,
+            'answer' => $this->answer,
+            'category' => $this->selectedCategory,
+            'level' => $this->selectedLevel,
+        ]);
 
         $this->closeModal();
         return redirect()->to(url()->previous());
