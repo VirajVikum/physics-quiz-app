@@ -27,8 +27,8 @@ class CreateLevel extends ModalComponent
     {
 
         $validatedData = $this->validate();
-        $extension = QuestionLevel::findOrFail($this->levelId);
-        $extension->update($validatedData);
+        $level = QuestionLevel::findOrFail($this->levelId);
+        $level->update($validatedData);
 
         $this->closeModal();
         return redirect()->to(url()->previous());

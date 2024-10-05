@@ -14,7 +14,11 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->text('question');
-            $table->text('options');
+            $table->text('option1');
+            $table->text('option2');
+            $table->text('option3');
+            $table->text('option4');
+            $table->text('option5');
             $table->text('answer');
             $table->string('level');
             $table->string('category');

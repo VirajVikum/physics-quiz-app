@@ -27,8 +27,8 @@ class CreateCategory extends ModalComponent
     {
 
         $validatedData = $this->validate();
-        $extension = QuestionCategory::findOrFail($this->categoryId);
-        $extension->update($validatedData);
+        $category = QuestionCategory::findOrFail($this->categoryId);
+        $category->update($validatedData);
 
         $this->closeModal();
         return redirect()->to(url()->previous());

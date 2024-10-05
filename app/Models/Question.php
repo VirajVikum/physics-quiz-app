@@ -11,7 +11,11 @@ class Question extends Model
 
     protected $fillable = [
         'question',
-        'options',
+        'option1',
+        'option2',
+        'option3',
+        'option4',
+        'option5',
         'answer',
         'level',
         'category'

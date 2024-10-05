@@ -15,7 +15,7 @@ use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 
 final class QuestionTable extends PowerGridComponent
 {
-    public string $tableName = 'question-table-icjcso-table';
+    public string $tableName = 'question-table-6hgidl-table';
 
     public function setUp(): array
     {
@@ -40,7 +40,11 @@ final class QuestionTable extends PowerGridComponent
         return PowerGrid::fields()
             ->add('id')
             ->add('question')
-            ->add('options')
+            ->add('option1')
+            ->add('option2')
+            ->add('option3')
+            ->add('option4')
+            ->add('option5')
             ->add('answer')
             ->add('level')
             ->add('category')
@@ -56,7 +60,23 @@ final class QuestionTable extends PowerGridComponent
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Options', 'options')
+            Column::make('Option1', 'option1')
+                ->sortable()
+                ->searchable(),
+
+            Column::make('Option2', 'option2')
+                ->sortable()
+                ->searchable(),
+
+            Column::make('Option3', 'option3')
+                ->sortable()
+                ->searchable(),
+
+            Column::make('Option4', 'option4')
+                ->sortable()
+                ->searchable(),
+
+            Column::make('Option5', 'option5')
                 ->sortable()
                 ->searchable(),
 
