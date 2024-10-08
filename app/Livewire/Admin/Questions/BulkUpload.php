@@ -41,6 +41,7 @@ class BulkUpload extends ModalComponent
         $sheetData = $spreadsheet->getActiveSheet()->toArray();
 
         foreach (array_slice($sheetData, 1) as $row) {
+            if (!Question::where('question', $row[0])->exists()) {
             Question::create([
                 'question' => $row[0], // Adjust according to your column setup
                 'option1' => $row[1],
@@ -53,6 +54,7 @@ class BulkUpload extends ModalComponent
                 'sub_category' => $this->selectedSubcategory,
                 'level' => $this->selectedLevel,
             ]);
+        }
         }
 
         session()->flash('message', 'Questions uploaded successfully!');
