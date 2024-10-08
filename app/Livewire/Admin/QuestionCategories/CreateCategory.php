@@ -9,10 +9,11 @@ use LivewireUI\Modal\ModalComponent;
 class CreateCategory extends ModalComponent
 {
     public $isEdit = false;
-    public $category, $categoryId;
+    public $category, $categoryId, $sub_categories;
 
     protected $rules =[
         'category'=>'required',
+        'sub_categories'=>'required',
     ];
 
     public function create()

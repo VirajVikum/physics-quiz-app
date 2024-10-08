@@ -13,26 +13,43 @@ class CreateQuestion extends ModalComponent
     public $isEdit = false;
     public $question, $questionId, $option1, $option2, $option3, $option4, $option5, $answer;
     public $categories, $levels;
-    public $selectedLevel='';
-    public $selectedCategory='';
+    public $selectedLevel = '';
+    public $selectedCategory = '';
+    public $selectedSubcategory = '';
+    public $sub_categories = [];
 
-    protected $rules =[
-        'question'=>'required',
-        'option1'=>'required',
-        'option2'=>'required',
-        'option3'=>'required',
-        'option4'=>'required',
-        'option5'=>'required',
-        'answer'=>'required',
-        'selectedCategory'=>'required',
-        'selectedCategory'=>'required',
+    protected $rules = [
+        'question' => 'required',
+        'option1' => 'required',
+        'option2' => 'required',
+        'option3' => 'required',
+        'option4' => 'required',
+        'option5' => 'required',
+        'answer' => 'required',
+        'selectedCategory' => 'required',
+        'selectedSubcategory' => 'required',
     ];
 
     public function mount()
     {
-        $this->categories=QuestionCategory::all();
-        $this->levels=QuestionLevel::all();
+        $this->categories = QuestionCategory::all();
+        $this->levels = QuestionLevel::all();
+
+        if ($this->selectedCategory) {
+            $category = QuestionCategory::where('category', $this->selectedCategory)->first();
+
+            // Check if the category was found and if the sub_category data is available
+            if ($category && $category->sub_categories) {
+                // Explode the comma-separated sub_category string into an array
+                $this->sub_categories = explode(',', $category->sub_categories);
+            } else {
+                // Handle the case where no sub_categories are found
+                $this->sub_categories = [];
+            }
+        }
     }
+
+
 
     public function create()
     {
@@ -47,6 +64,7 @@ class CreateQuestion extends ModalComponent
             'option5' =>  $this->option5,
             'answer' => $this->answer,
             'category' => $this->selectedCategory,
+            'sub_category' => $this->selectedSubcategory,
             'level' => $this->selectedLevel,
         ]);
 
@@ -68,11 +86,31 @@ class CreateQuestion extends ModalComponent
             'option5' =>  $this->option5,
             'answer' => $this->answer,
             'category' => $this->selectedCategory,
+            'sub_category' => $this->selectedSubcategory,
             'level' => $this->selectedLevel,
         ]);
 
         $this->closeModal();
         return redirect()->to(url()->previous());
+    }
+
+
+
+    public function updated($selectedCategory)
+    {
+        // dd('ghh');
+
+        // Fetch the sub_category data from the QuestionCategory model
+        $category = QuestionCategory::where('category', $this->selectedCategory)->first();
+
+        // Check if the category was found and if the sub_category data is available
+        if ($category && $category->sub_categories) {
+            // Explode the comma-separated sub_category string into an array
+            $this->sub_categories = explode(',', $category->sub_categories);
+        } else {
+            // Handle the case where no sub_categories are found
+            $this->sub_categories = [];
+        }
     }
 
     public function render()

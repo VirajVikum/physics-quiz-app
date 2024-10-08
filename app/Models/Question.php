@@ -18,6 +18,7 @@ class Question extends Model
         'option5',
         'answer',
         'level',
-        'category'
+        'category',
+        'sub_category'
     ];
 }

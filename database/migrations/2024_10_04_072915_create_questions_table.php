@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('answer');
             $table->string('level');
             $table->string('category');
+            $table->string('sub_category');
             $table->timestamps();
         });
     }

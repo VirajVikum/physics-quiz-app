@@ -31,6 +31,19 @@
 
                 </div>
 
+                <div wire:poll class="pt-2">
+                    <label for="selectedSubcategory"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Question Sub Category</label>
+                    <select id="selectedSubcategory" name="selectedSubcategory" wire:model="selectedSubcategory"
+                        class="text-black bg-gray-200 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-300 dark:hover:bg-gray-400 dark:focus:ring-gray-500 block w-full">
+                        <option value="" disabled selected>Select a sub category</option>
+                        @foreach($sub_categories as $sub_category)
+                        <option value="{{$sub_category}}">{{$sub_category}}</option>
+                        @endforeach
+                    </select>
+
+                </div>
+
                 <div class="pt-2">
                     <label for="selectedLevel"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Question Level</label>

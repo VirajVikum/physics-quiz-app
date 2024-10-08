@@ -40,6 +40,7 @@ final class QcategoryTable extends PowerGridComponent
         return PowerGrid::fields()
             ->add('id')
             ->add('category')
+            ->add('sub_categories')
             ->add('created_at')
             ->add('updated_at');
     }
@@ -49,6 +50,10 @@ final class QcategoryTable extends PowerGridComponent
         return [
             Column::make('Id', 'id'),
             Column::make('Category', 'category')
+                ->sortable()
+                ->searchable(),
+
+            Column::make('Sub Categories', 'sub_categories')
                 ->sortable()
                 ->searchable(),
 
@@ -83,7 +88,7 @@ final class QcategoryTable extends PowerGridComponent
                 ->slot('Edit: '.$row->id)
                 ->id()
                 ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
-                ->openModal('admin.question-categories.create-category', ['isEdit' => true, 'categoryId' => $row->id, 'category'=> $row->category]),
+                ->openModal('admin.question-categories.create-category', ['isEdit' => true, 'categoryId' => $row->id, 'category'=> $row->category, 'sub_categories'=> $row->sub_categories]),
 
                 // Button::add('edit')
                 // ->slot('Edit: ' . $row->id)

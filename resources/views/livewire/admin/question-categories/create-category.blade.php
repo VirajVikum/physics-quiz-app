@@ -16,15 +16,20 @@
     <!-- Modal body -->
     <form class="p-4 md:p-5">
         @csrf
-        <div class="grid gap-4 mb-4 grid-cols-2">
+        
             <div class="col-span-2 sm:col-span-1">
                 <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
                 <input type="text" wire:model="category" name="category" id="category"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Enter New Category">
+
+                <label for="sub_categories" class="block mb-2 text-sm pt-3 font-medium text-gray-900 dark:text-white">Sub Categories (Seperate by a comma)</label>
+                <textarea wire:model="sub_categories" name="sub_categories" id="sub_categories" rows="5"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder="Enter New Sub Categories"> </textarea>
             </div>
 
-        </div>
+        <div class="pt-3">
         <button type="button" wire:click="{{ $isEdit ? 'update' : 'create' }}"
             class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
             <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -34,5 +39,6 @@
             </svg>
             {{ $isEdit ? 'Update' : 'Save' }}
         </button>
+    </div>
     </form>
 </div>

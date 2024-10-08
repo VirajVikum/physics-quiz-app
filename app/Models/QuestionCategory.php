@@ -10,7 +10,8 @@ class QuestionCategory extends Model
     use HasFactory;
 
     protected $fillable = [
-        'category'
+        'category',
+        'sub_categories'
     ];
 
     public function questions()
