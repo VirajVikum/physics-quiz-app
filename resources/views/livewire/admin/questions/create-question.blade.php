@@ -28,6 +28,7 @@
                         <option value="{{$category->category}}">{{$category->category}}</option>
                         @endforeach
                     </select>
+                    @error('selectedCategory') <span class="text-red-500">{{ $message }}</span> @enderror
 
                 </div>
 
@@ -41,6 +42,7 @@
                         <option value="{{$sub_category}}">{{$sub_category}}</option>
                         @endforeach
                     </select>
+                    @error('selectedSubcategory') <span class="text-red-500">{{ $message }}</span> @enderror
 
                 </div>
 
@@ -54,6 +56,7 @@
                         <option value="{{$level->level}}">{{$level->level}}</option>
                         @endforeach
                     </select>
+                    @error('selectedLevel') <span class="text-red-500">{{ $message }}</span> @enderror
 
                 </div>
 
@@ -62,42 +65,49 @@
                 <textarea rows=3 wire:model="question" name="question" id="question"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Enter New Question"> </textarea>
+                    @error('question') <span class="text-red-500">{{ $message }}</span> @enderror
 
                 <label for="option1" class="block text-sm font-medium text-gray-900 dark:text-white pt-2">Option
                     1</label>
                 <input type="text" wire:model="option1" name="option1" id="option1"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Enter Option 1">
+                    @error('option1') <span class="text-red-500">{{ $message }}</span> @enderror
 
                 <label for="option2" class="block pt-2 text-sm font-medium text-gray-900 dark:text-white">Option
                     2</label>
                 <input type="text" wire:model="option2" name="option2" id="option2"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Enter Option 2">
+                    @error('option2') <span class="text-red-500">{{ $message }}</span> @enderror
 
                 <label for="option3" class="block pt-2 text-sm font-medium text-gray-900 dark:text-white">Option
                     3</label>
                 <input type="text" wire:model="option3" name="option3" id="option3"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Enter Option 3">
+                    @error('option3') <span class="text-red-500">{{ $message }}</span> @enderror
 
                 <label for="option4" class="block pt-2 text-sm font-medium text-gray-900 dark:text-white">Option
                     4</label>
                 <input type="text" wire:model="option4" name="option4" id="option4"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Enter Option 4">
+                    @error('option4') <span class="text-red-500">{{ $message }}</span> @enderror
 
                 <label for="option5" class="block pt-2 text-sm font-medium text-gray-900 dark:text-white">Option
                     5</label>
                 <input type="text" wire:model="option5" name="option5" id="option5"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Enter Option 5">
+                    @error('option5') <span class="text-red-500">{{ $message }}</span> @enderror
 
                 <label for="answer" class="block pt-2 text-sm font-medium text-gray-900 dark:text-white">Correct
                     Answer</label>
                 <input type="text" wire:model="answer" name="answer" id="answer"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Enter Correct Answer">
+                    @error('answer') <span class="text-red-500">{{ $message }}</span> @enderror
 
 
             </div>

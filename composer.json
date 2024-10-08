@@ -13,6 +13,7 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.5",
         "livewire/volt": "^1.0",
+        "phpoffice/phpspreadsheet": "^3.3",
         "power-components/livewire-powergrid": "^6.0",
         "spatie/laravel-permission": "^6.9",
         "wire-elements/modal": "^2.0"

@@ -6,10 +6,14 @@ use App\Models\Question;
 use App\Models\QuestionCategory;
 use App\Models\QuestionLevel;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use LivewireUI\Modal\ModalComponent;
+use PhpOffice\PhpSpreadsheet\IOFactory;
 
-class CreateQuestion extends ModalComponent
+class BulkUpload extends ModalComponent
 {
+    use WithFileUploads;
+
     public $isEdit = false;
     public $question, $questionId, $option1, $option2, $option3, $option4, $option5, $answer;
     public $categories, $levels;
@@ -17,15 +21,10 @@ class CreateQuestion extends ModalComponent
     public $selectedCategory = '';
     public $selectedSubcategory = '';
     public $sub_categories = [];
+    public $excelFile;
 
     protected $rules = [
-        'question' => 'required|unique:questions,question',
-        'option1' => 'required',
-        'option2' => 'required',
-        'option3' => 'required',
-        'option4' => 'required',
-        'option5' => 'required',
-        'answer' => 'required',
+        'excelFile' => 'nullable|file|mimes:xlsx|max:10240',
         'selectedCategory' => 'required',
         'selectedLevel' => 'required',
         'selectedSubcategory' => 'required',
@@ -34,6 +33,33 @@ class CreateQuestion extends ModalComponent
     protected $messages = [
         'selectedLevel.required' => 'Please select a level for the question.',
     ];
+
+    public function uploadQuestionsFromExcel()
+{
+    if ($this->excelFile) {
+        $spreadsheet = IOFactory::load($this->excelFile->getRealPath());
+        $sheetData = $spreadsheet->getActiveSheet()->toArray();
+
+        foreach (array_slice($sheetData, 1) as $row) {
+            Question::create([
+                'question' => $row[0], // Adjust according to your column setup
+                'option1' => $row[1],
+                'option2' => $row[2],
+                'option3' => $row[3],
+                'option4' => $row[4],
+                'option5' => $row[5],
+                'answer' => $row[6],
+                'category' => $this->selectedCategory,
+                'sub_category' => $this->selectedSubcategory,
+                'level' => $this->selectedLevel,
+            ]);
+        }
+
+        session()->flash('message', 'Questions uploaded successfully!');
+        $this->closeModal();
+        return redirect()->to(url()->previous());
+    }
+}
 
     public function mount()
     {
@@ -56,49 +82,6 @@ class CreateQuestion extends ModalComponent
 
 
 
-    public function create()
-    {
-        $validatedData = $this->validate();
-
-        Question::create([
-            'question' => $this->question,
-            'option1' =>  $this->option1,
-            'option2' =>  $this->option2,
-            'option3' =>  $this->option3,
-            'option4' =>  $this->option4,
-            'option5' =>  $this->option5,
-            'answer' => $this->answer,
-            'category' => $this->selectedCategory,
-            'sub_category' => $this->selectedSubcategory,
-            'level' => $this->selectedLevel,
-        ]);
-
-        $this->closeModal();
-        return redirect()->to(url()->previous());
-    }
-
-    public function update()
-    {
-
-        $validatedData = $this->validate();
-        $question = Question::findOrFail($this->questionId);
-        $question->update([
-            'question' => $this->question,
-            'option1' =>  $this->option1,
-            'option2' =>  $this->option2,
-            'option3' =>  $this->option3,
-            'option4' =>  $this->option4,
-            'option5' =>  $this->option5,
-            'answer' => $this->answer,
-            'category' => $this->selectedCategory,
-            'sub_category' => $this->selectedSubcategory,
-            'level' => $this->selectedLevel,
-        ]);
-
-        $this->closeModal();
-        return redirect()->to(url()->previous());
-    }
-
 
 
     public function updated($selectedCategory)
@@ -118,8 +101,9 @@ class CreateQuestion extends ModalComponent
         }
     }
 
+
     public function render()
     {
-        return view('livewire.admin.questions.create-question');
+        return view('livewire.admin.questions.bulk-upload');
     }
 }

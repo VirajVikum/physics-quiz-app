@@ -4,7 +4,11 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Questions Management') }}
         </h2>
+        <div>
         <button type="button" class="text-right pr-2" onclick="Livewire.dispatch('openModal',{component: 'admin.questions.create-question'})">new</button>
+
+        <button type="button" class="text-right pr-2" onclick="Livewire.dispatch('openModal',{component: 'admin.questions.bulk-upload'})">Upload excel file</button>
+    </div>
     </div>
     </x-slot>
 
