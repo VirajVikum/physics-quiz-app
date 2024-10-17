@@ -26,9 +26,9 @@
                     <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                 </a>
             </div>
-            <a href="#section2" class="mb-2 sm:mb-0 me-0 sm:me-4 font-semibold hover:text-cyan-300">Home</a>
-            <a href="#section3" class="mb-2 sm:mb-0 me-0 sm:me-4 font-semibold hover:text-cyan-300">About</a>
-            <a href="#section4" class="mb-2 sm:mb-0 me-0 sm:me-4 font-semibold hover:text-cyan-300">Contact</a>
+            <a href="#section1" class="mb-2 sm:mb-0 me-0 sm:me-4 font-semibold hover:text-cyan-300">Home</a>
+            <a href="#section2" class="mb-2 sm:mb-0 me-0 sm:me-4 font-semibold hover:text-cyan-300">About</a>
+            <a href="#section3" class="mb-2 sm:mb-0 me-0 sm:me-4 font-semibold hover:text-cyan-300">Contact</a>
         </div>
 
         <!-- Right-aligned links -->

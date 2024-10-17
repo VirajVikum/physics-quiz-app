@@ -24,6 +24,7 @@
             @endif
         </div>
 
+        <section id="section1">
         <div class="">
             <video autoplay muted loop id="bg-video" class="absolute inset-0 w-full h-full object-cover">
                 <source src="{{ asset('images/course-video.mp4') }}" type="video/mp4" />
@@ -35,19 +36,21 @@
                     <div class="flex justify-center items-center"><x-application-logo class="block h-9 w-auto fill-current text-gray-800" /></div>
                     <h2 class="text-4xl font-semibold mt-4"><em>Physics</em> Adventures</h2>
                     <div class="mt-8">
-                        <a href="#section2"
+                        <a href="{{ route('login') }}" wire:navigate
                             class="bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700">Login for
                             play</a>
                     </div>
                 </div>
             </div>
         </div>
+        
 
         <div class="flex justify-center pt-12">
             <h1 class="text-4xl text-bold text-red-500 font-serif">Physics Q & A</h1>           
 
         </div>
 
+    </section>
 
          
     </div>
@@ -92,6 +95,7 @@
 
             </div>
 
+            <section id="section2">
             <div class="pb-12">
                 <div
                     class="scale-100 p-6 bg-transparent  dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
@@ -122,6 +126,7 @@
                 </div>
 
             </div>
+            </section>
 
             <div class="pb-12">
 
@@ -153,6 +158,7 @@
 
             </div>
 
+            <section id="section3">
             <div class="pb-12">
 
                 <div
@@ -176,6 +182,7 @@
                 </div>
 
             </div>
+            </section>
 
             {{-- </div> --}}
         </div>
