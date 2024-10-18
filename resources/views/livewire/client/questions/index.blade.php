@@ -1,7 +1,7 @@
 <div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-white leading-tight">
-            {{ __('Questions') }}
+            {{ __('Question ') }}
         </h2>
     </x-slot>
 
@@ -10,6 +10,8 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     {{-- {{ __("You're logged in!") }} --}}
+                    {{$category}}
+                    {{$sub_category}}
                     @livewire('client.questions.question-set')
                 </div>
             </div>

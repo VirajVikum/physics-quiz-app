@@ -32,7 +32,7 @@
                                 <div
                                     class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 transform transition duration-300 hover:scale-90">
                                     <div wire:poll.10s class="flex justify-center items-center">
-                                        <a href="#">
+                                        <a href="{{route('client.question-index', ['cat' =>  $selectedCategory,'sub' =>  $sub_category ])}}">
                                             <img class="p-8 rounded-t-lg h-80 w-120" src="/images/categories/{{ $randomImageNumber }}.jpeg" alt="physics quiz" />
                                         </a>
                                     </div>
@@ -83,7 +83,7 @@
 
                                         <div class="flex items-center justify-between">
                                             <span class="text-3xl font-bold text-gray-900 dark:text-white">15/20</span>
-                                            <a href="#"
+                                            <a href="{{route('client.question-index', ['cat' =>  $selectedCategory,'sub' =>  $sub_category ])}}"
                                                 class="text-black bg-lightGray hover:darkBlue focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Lets
                                                 Play</a>
                                         </div>

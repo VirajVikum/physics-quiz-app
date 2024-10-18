@@ -52,9 +52,9 @@ new class extends Component
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate class=" text-white mb-2 sm:mb-0 me-0 sm:me-4 font-semibold hover:text-cyan-300">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('client.question-index')" :active="request()->routeIs('client.question-index')" wire:navigate class=" text-white mb-2 sm:mb-0 me-0 sm:me-4 font-semibold hover:text-cyan-300">
+                    {{-- <x-nav-link :href="route('client.question-index')" :active="request()->routeIs('client.question-index')" wire:navigate class=" text-white mb-2 sm:mb-0 me-0 sm:me-4 font-semibold hover:text-cyan-300">
                         {{ __('Questions') }}
-                    </x-nav-link>
+                    </x-nav-link> --}}
                     @endrole
                 </div>
             </div>

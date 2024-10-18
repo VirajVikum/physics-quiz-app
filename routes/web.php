@@ -39,5 +39,5 @@ Route::prefix('admin')->name('admin.')->group(function () {
 });
 
 Route::prefix('client')->name('client.')->group(function (){
-    Route::get('/questions',ClientQuestionIndex::class,)->name('question-index');
+    Route::get('/questions/{cat}/{sub}',ClientQuestionIndex::class,)->name('question-index');
 });
