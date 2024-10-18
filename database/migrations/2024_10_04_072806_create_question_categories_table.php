@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('category');
             $table->text('sub_categories');
+            $table->integer('delete_status')->default(0);
             $table->timestamps();
         });
     }

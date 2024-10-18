@@ -61,25 +61,25 @@ final class QuestionTable extends PowerGridComponent
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Option1', 'option1')
-                ->sortable()
-                ->searchable(),
+            // Column::make('Option1', 'option1')
+            //     ->sortable()
+            //     ->searchable(),
 
-            Column::make('Option2', 'option2')
-                ->sortable()
-                ->searchable(),
+            // Column::make('Option2', 'option2')
+            //     ->sortable()
+            //     ->searchable(),
 
-            Column::make('Option3', 'option3')
-                ->sortable()
-                ->searchable(),
+            // Column::make('Option3', 'option3')
+            //     ->sortable()
+            //     ->searchable(),
 
-            Column::make('Option4', 'option4')
-                ->sortable()
-                ->searchable(),
+            // Column::make('Option4', 'option4')
+            //     ->sortable()
+            //     ->searchable(),
 
-            Column::make('Option5', 'option5')
-                ->sortable()
-                ->searchable(),
+            // Column::make('Option5', 'option5')
+            //     ->sortable()
+            //     ->searchable(),
 
             Column::make('Answer', 'answer')
                 ->sortable()
@@ -100,9 +100,9 @@ final class QuestionTable extends PowerGridComponent
             // Column::make('Created at', 'created_at_formatted', 'created_at')
             //     ->sortable(),
 
-            Column::make('Created at', 'created_at')
-                ->sortable()
-                ->searchable(),
+            // Column::make('Created at', 'created_at')
+            //     ->sortable()
+            //     ->searchable(),
 
             // Column::make('Updated at', 'updated_at_formatted', 'updated_at')
             //     ->sortable(),

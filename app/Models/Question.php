@@ -19,6 +19,7 @@ class Question extends Model
         'answer',
         'level',
         'category',
-        'sub_category'
+        'sub_category',
+        'delete_status'
     ];
 }

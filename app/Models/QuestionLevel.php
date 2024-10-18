@@ -10,7 +10,8 @@ class QuestionLevel extends Model
     use HasFactory;
 
     protected $fillable = [
-        'level'
+        'level',
+        'delete_status'
     ];
 
     public function questions()

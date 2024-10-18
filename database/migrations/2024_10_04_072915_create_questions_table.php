@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('level');
             $table->string('category');
             $table->string('sub_category');
+            $table->integer('delete_status')->default(0);
             $table->timestamps();
         });
     }

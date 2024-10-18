@@ -11,7 +11,8 @@ class QuestionCategory extends Model
 
     protected $fillable = [
         'category',
-        'sub_categories'
+        'sub_categories',
+        'delete_status'
     ];
 
     public function questions()

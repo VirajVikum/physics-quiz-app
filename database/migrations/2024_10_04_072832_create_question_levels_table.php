@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('question_levels', function (Blueprint $table) {
             $table->id();
             $table->string('level');
+            $table->integer('delete_status')->default(0);
             $table->timestamps();
         });
     }
