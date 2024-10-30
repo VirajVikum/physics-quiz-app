@@ -11,6 +11,7 @@ class Index extends Component
     public $category;
     public $questions;
     public $selectedOption;
+    public $selectedQuestionId;
 
     public function mount($cat, $sub)
     {
@@ -22,8 +23,9 @@ class Index extends Component
             ->get();
     }
 
-    public function optionSelected($option)
+    public function optionSelected($questionId,$option)
     {
+        $this->selectedQuestionId = $questionId;
         $this->selectedOption = $option;
     }
 
