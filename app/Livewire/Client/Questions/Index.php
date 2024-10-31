@@ -12,6 +12,10 @@ class Index extends Component
     public $questions;
     public $selectedOption;
     public $selectedQuestionId;
+    public $selectedAnswers = [];
+    public $completedQuestions = [];
+    public $correctAnswersCount = 0;
+    public $QuestionCount = 0;
 
     public function mount($cat, $sub)
     {
@@ -27,6 +31,14 @@ class Index extends Component
     {
         $this->selectedQuestionId = $questionId;
         $this->selectedOption = $option;
+        $this->selectedAnswers[$questionId] = $option;
+        $this->completedQuestions[$questionId] = true;
+        $this->QuestionCount++;
+
+        $question = $this->questions->firstWhere('id', $questionId); 
+        if ($question && $option === $question->answer) {
+            $this->correctAnswersCount++;
+        }
     }
 
     public function render()
