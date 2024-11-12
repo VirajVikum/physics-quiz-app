@@ -13,7 +13,7 @@ class QuestionSeeder extends Seeder
      */
     public function run(): void
     {
-        $questions = [
+        $Mechanicsquestions = [
             [
                 'question' => 'What is the SI unit of force?',
                 'option1' => 'Newton',
@@ -120,7 +120,92 @@ class QuestionSeeder extends Seeder
             ],
         ];
 
-        foreach ($questions as $question) {
+        $Lightquestions = [
+            // Existing questions...
+        
+            // New questions for the "Light" lesson
+            [
+                'question' => 'What is the speed of light in a vacuum?',
+                'option1' => '3 x 10^8 m/s',
+                'option2' => '2.9 x 10^8 m/s',
+                'option3' => '1.5 x 10^7 m/s',
+                'option4' => '3.5 x 10^7 m/s',
+                'option5' => '2.5 x 10^8 m/s',
+                'answer' => '3 x 10^8 m/s',
+                'level' => 'Expert',
+                'category' => 'Optics',
+                'sub_category' => 'Properties of Light',
+                'delete_status' => 0,
+            ],
+            [
+                'question' => 'What phenomenon causes a rainbow?',
+                'option1' => 'Reflection',
+                'option2' => 'Refraction',
+                'option3' => 'Diffraction',
+                'option4' => 'Dispersion',
+                'option5' => 'Interference',
+                'answer' => 'Dispersion',
+                'level' => 'Expert',
+                'category' => 'Optics',
+                'sub_category' => 'Light Phenomena',
+                'delete_status' => 0,
+            ],
+            [
+                'question' => 'Which type of mirror is used in car headlights?',
+                'option1' => 'Concave',
+                'option2' => 'Convex',
+                'option3' => 'Plane',
+                'option4' => 'Spherical',
+                'option5' => 'Parabolic',
+                'answer' => 'Concave',
+                'level' => 'Expert',
+                'category' => 'Optics',
+                'sub_category' => 'Reflection',
+                'delete_status' => 0,
+            ],
+            [
+                'question' => 'What is the term for light bending as it enters a different medium?',
+                'option1' => 'Reflection',
+                'option2' => 'Diffraction',
+                'option3' => 'Dispersion',
+                'option4' => 'Refraction',
+                'option5' => 'Absorption',
+                'answer' => 'Refraction',
+                'level' => 'Expert',
+                'category' => 'Optics',
+                'sub_category' => 'Refraction',
+                'delete_status' => 0,
+            ],
+            [
+                'question' => 'Which color of visible light has the most energy per photon?',
+                'option1' => 'Red',
+                'option2' => 'Yellow',
+                'option3' => 'Green',
+                'option4' => 'Blue',
+                'option5' => 'Violet',
+                'answer' => 'Violet',
+                'level' => 'Expert',
+                'category' => 'Optics',
+                'sub_category' => 'Wavelength and Color',
+                'delete_status' => 0,
+            ],
+            [
+                'question' => 'What type of lens corrects myopia (nearsightedness)?',
+                'option1' => 'Convex',
+                'option2' => 'Concave',
+                'option3' => 'Cylindrical',
+                'option4' => 'Spherical',
+                'option5' => 'Plano-convex',
+                'answer' => 'Concave',
+                'level' => 'Expert',
+                'category' => 'Optics',
+                'sub_category' => 'Lenses',
+                'delete_status' => 0,
+            ],
+        ];
+        
+
+        foreach ($Lightquestions as $question) {
             Question::create($question);
         }
     }

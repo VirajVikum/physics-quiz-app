@@ -7,6 +7,8 @@ use Livewire\Component;
 
 class Index extends Component
 {
+    public $level;
+
     public $sub_category;
     public $category;
     public $questions;
@@ -20,12 +22,16 @@ class Index extends Component
     public $result;
     public $showResult =false;
 
-    public function mount($cat, $sub)
+    
+
+    public function mount($cat,$lvl , $sub)
     {
         $this->sub_category = $sub;
         $this->category = $cat;
+        $this->level= $lvl;
 
         $this->questions = Question::where('category', $this->category)
+        ->where('level', $this->level)
         ->where('sub_category', $this->sub_category)
         ->inRandomOrder()
         ->take(20)

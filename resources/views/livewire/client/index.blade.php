@@ -12,16 +12,30 @@
                     {{-- {{ __("You're logged in!") }} --}}
 
 
-                    <div class="flex items-center">
-                        <h2 class="pr-8 font-bold text-xl text-darkBlue leading-tight animate-pulse animate-infinite animate-ease-linear">Select the Category Here</h2>
+                    <div class="flex items-center ">
+                        <div class="pr-4">
+                            <h2 class="pr-8 font-bold text-xl text-darkBlue leading-tight animate-pulse animate-infinite animate-ease-linear">Select the Category Here</h2>
                         <select id="dropdownDefaultButton" wire:model="selectedCategory"
                             class="text-white bg-darkBlue  hover:bg-darkBlue  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transform transition duration-300 hover:scale-110"
                             onchange="">
                             <option value="" disabled selected>Dropdown menu</option>
                             @foreach ($categories as $category)
-                                <option class="font-semibold text-lg text-white rounded-lg" value="{{ $category->category }}">{{ $category->category }}</option>
+                                <option class="font-semibold text-lg text-white rounded-xl" style="border-radius: 45px;" value="{{ $category->category }}">{{ $category->category }}</option>
                             @endforeach
                         </select>
+                        </div>
+
+                        <div>
+                            <h2 class="pr-8 font-bold text-xl text-darkBlue leading-tight animate-pulse animate-infinite animate-ease-linear">Select the Level Here</h2>
+                        <select id="dropdownDefaultButton" wire:model="selectedLevel"
+                            class="text-white bg-darkBlue  hover:bg-darkBlue  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transform transition duration-300 hover:scale-110"
+                            onchange="">
+                            <option value="" disabled selected>Dropdown menu</option>
+                            @foreach ($levels as $level)
+                                <option class="font-semibold text-lg text-white rounded-xl" style="border-radius: 45px;" value="{{ $level->level }}">{{ $level->level }}</option>
+                            @endforeach
+                        </select>
+                        </div>
                     </div>
                     
 
@@ -32,8 +46,8 @@
                                 <div
                                     class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 transform transition duration-300 hover:scale-90">
                                     <div wire:poll.10s class="flex justify-center items-center">
-                                        <a href="{{route('client.question-index', ['cat' =>  $selectedCategory,'sub' =>  $sub_category ])}}">
-                                            <img class="p-8 rounded-t-lg h-80 w-120" src="/images/categories/{{ $randomImageNumber }}.jpeg" alt="physics quiz" />
+                                        <a href="{{route('client.question-index', ['cat' =>  $selectedCategory, 'lvl' =>  $selectedLevel,'sub' =>  $sub_category ])}}">
+                                            <img class="p-8 rounded-xl h-80 w-120"  style="border-radius: 45px;" src="/images/categories/{{ $randomImageNumber }}.jpeg" alt="physics quiz" />
                                         </a>
                                     </div>
                                     
@@ -83,7 +97,7 @@
 
                                         <div class="flex items-center justify-between">
                                             <span class="text-3xl font-bold text-gray-900 dark:text-white">15/20</span>
-                                            <a href="{{route('client.question-index', ['cat' =>  $selectedCategory,'sub' =>  $sub_category ])}}"
+                                            <a href="{{route('client.question-index', ['cat' =>  $selectedCategory, 'lvl' =>  $selectedLevel,'sub' =>  $sub_category ])}}"
                                                 class="text-black bg-lightGray hover:darkBlue focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Lets
                                                 Play</a>
                                         </div>
