@@ -3,6 +3,7 @@
 namespace App\Livewire\Client;
 
 use App\Models\QuestionCategory;
+use App\Models\QuestionLevel;
 use Livewire\Component;
 use PhpOffice\PhpSpreadsheet\Calculation\Category;
 
@@ -13,10 +14,16 @@ class Index extends Component
     public $randomImageNumber;
     public $sub_categories = [];
 
+    public $levels;
+    public $selectedLevel;
+
     public function mount()
     {
+        $this->levels = QuestionLevel::where('delete_status', 0)->get();
+        $this->selectedLevel = QuestionLevel::where('delete_status', 0)->first()->level;
+
         $this->categories = QuestionCategory::where('delete_status', 0)->get();
-        $this->selectedCategory = QuestionCategory::where('delete_status', 0)->first()->category;
+        $this->selectedCategory = QuestionCategory::where('delete_status', 0)->first()->category;        
         $this->randomImageNumber=rand(1, 17);
 
         if ($this->selectedCategory) {
@@ -32,6 +39,11 @@ class Index extends Component
             }
         }
     }
+
+    // public function updated($selectedLevel)
+    // {
+    //     $this->dispatch();
+    // }
 
     public function updated($selectedCategory)
     {
