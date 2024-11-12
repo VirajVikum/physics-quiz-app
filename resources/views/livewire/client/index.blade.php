@@ -12,31 +12,32 @@
                     {{-- {{ __("You're logged in!") }} --}}
 
 
-                    <div class="flex items-center ">
-                        <div class="pr-4">
-                            <h2 class="pr-8 font-bold text-xl text-darkBlue leading-tight animate-pulse animate-infinite animate-ease-linear">Select the Category Here</h2>
-                        <select id="dropdownDefaultButton" wire:model="selectedCategory"
-                            class="text-white bg-darkBlue  hover:bg-darkBlue  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transform transition duration-300 hover:scale-110"
-                            onchange="">
-                            <option value="" disabled selected>Dropdown menu</option>
-                            @foreach ($categories as $category)
-                                <option class="font-semibold text-lg text-white rounded-xl" style="border-radius: 45px;" value="{{ $category->category }}">{{ $category->category }}</option>
-                            @endforeach
-                        </select>
+                    <div class="flex flex-col md:flex-row items-center md:justify-between justify-start ">
+                        <div class="mb-4 md:mb-0">
+                            <h2 class="pr-8 pb-2 font-bold text-xl text-darkBlue leading-tight animate-pulse animate-infinite animate-ease-linear">Select the Category Here</h2>
+                            <select id="dropdownDefaultButton" wire:model="selectedCategory"
+                                class="text-white bg-darkBlue hover:bg-darkBlue focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transform transition duration-300 hover:scale-110"
+                                onchange="">
+                                <option value="" disabled selected>Dropdown menu</option>
+                                @foreach ($categories as $category)
+                                    <option class="font-semibold text-lg text-white rounded-xl" style="border-radius: 45px;" value="{{ $category->category }}">{{ $category->category }}</option>
+                                @endforeach
+                            </select>
                         </div>
-
-                        <div>
-                            <h2 class="pr-8 font-bold text-xl text-darkBlue leading-tight animate-pulse animate-infinite animate-ease-linear">Select the Level Here</h2>
-                        <select id="dropdownDefaultButton" wire:model="selectedLevel"
-                            class="text-white bg-darkBlue  hover:bg-darkBlue  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transform transition duration-300 hover:scale-110"
-                            onchange="">
-                            <option value="" disabled selected>Dropdown menu</option>
-                            @foreach ($levels as $level)
-                                <option class="font-semibold text-lg text-white rounded-xl" style="border-radius: 45px;" value="{{ $level->level }}">{{ $level->level }}</option>
-                            @endforeach
-                        </select>
+                    
+                        <div class="">
+                            <h2 class="pr-8 pb-2 font-bold text-xl text-darkBlue leading-tight animate-pulse animate-infinite animate-ease-linear">Select the Question Level Here</h2>
+                            <select id="dropdownDefaultButton" wire:model="selectedLevel"
+                                class="text-white bg-darkBlue hover:bg-darkBlue focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 transform transition duration-300 hover:scale-110"
+                                onchange="">
+                                <option value="" disabled selected>Dropdown menu</option>
+                                @foreach ($levels as $level)
+                                    <option class="font-semibold text-lg text-white rounded-xl" style="border-radius: 45px;" value="{{ $level->level }}">{{ $level->level }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
+                    
                     
 
                     <div wire:poll.1s class="pt-6">
