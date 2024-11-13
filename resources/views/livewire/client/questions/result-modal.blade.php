@@ -7,26 +7,55 @@
     </div>
 
     <!-- Star Rating Based on Result -->
-    <div class="text-center text-yellow-500 text-2xl mb-6">
+    <div class="text-center text-yellow-500 text-2xl mb-6 animate-pulse">
         @if ($result == 100)
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                class="fas fa-star"></i>
+            <i class="fas fa-star animate-star" style="animation-delay: 0s;"></i>
+            <i class="fas fa-star animate-star" style="animation-delay: 0.3s;"></i>
+            <i class="fas fa-star animate-star" style="animation-delay: 0.6s;"></i>
+            <i class="fas fa-star animate-star" style="animation-delay: 0.9s;"></i>
+            <i class="fas fa-star animate-star" style="animation-delay: 1.2s;"></i>
         @elseif ($result >= 75)
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                class="fas fa-star"></i><i class="far fa-star"></i>
+            <i class="fas fa-star animate-star" style="animation-delay: 0s;"></i>
+            <i class="fas fa-star animate-star" style="animation-delay: 0.3s;"></i>
+            <i class="fas fa-star animate-star" style="animation-delay: 0.6s;"></i>
+            <i class="fas fa-star animate-star" style="animation-delay: 0.9s;"></i>
+            <i class="far fa-star animate-star" style="animation-delay: 1.2s;"></i>
         @elseif ($result >= 65)
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                class="far fa-star"></i><i class="far fa-star"></i>
+            <i class="fas fa-star animate-star" style="animation-delay: 0s;"></i>
+            <i class="fas fa-star animate-star" style="animation-delay: 0.3s;"></i>
+            <i class="fas fa-star animate-star" style="animation-delay: 0.6s;"></i>
+            <i class="far fa-star animate-star" style="animation-delay: 0.9s;"></i>
+            <i class="far fa-star animate-star" style="animation-delay: 1.2s;"></i>
         @elseif ($result >= 45)
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i
-                class="far fa-star"></i><i class="far fa-star"></i>
+            <i class="fas fa-star animate-star" style="animation-delay: 0s;"></i>
+            <i class="fas fa-star animate-star" style="animation-delay: 0.3s;"></i>
+            <i class="far fa-star animate-star" style="animation-delay: 0.6s;"></i>
+            <i class="far fa-star animate-star" style="animation-delay: 0.9s;"></i>
+            <i class="far fa-star animate-star" style="animation-delay: 1.2s;"></i>
         @elseif ($result >= 5)
-            <i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i
-                class="far fa-star"></i><i class="far fa-star"></i>
+            <i class="fas fa-star animate-star" style="animation-delay: 0s;"></i>
+            <i class="far fa-star animate-star" style="animation-delay: 0.3s;"></i>
+            <i class="far fa-star animate-star" style="animation-delay: 0.6s;"></i>
+            <i class="far fa-star animate-star" style="animation-delay: 0.9s;"></i>
+            <i class="far fa-star animate-star" style="animation-delay: 1.2s;"></i>
         @else
             <p class="text-gray-500">No stars awarded</p>
         @endif
     </div>
+    
+    <style>
+        .animate-star {
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+    
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+    
 
     <p class="text-center text-gray-600 mb-8">Thank you for completing the quiz. Here is your result based on your
         responses.</p>
