@@ -78,7 +78,7 @@
                         <h2 class="mt-6 text-xl font-semibold text-lightGray   dark:text-white">Let's Begin the journey
                         </h2>
 
-                        <p class="mt-4 text-white  dark:text-gray-400 text-sm leading-relaxed">
+                        <p class="font-mono mt-4 text-white  dark:text-gray-400 text-sm leading-loose">
                             "Let’s Begin the Journey! Unlock the world of Physics by exploring our diverse range of
                             quizzes, notes, and interactive challenges designed for all proficiency levels. Whether
                             you are just starting out or striving for expert knowledge, each step of the journey
@@ -108,7 +108,7 @@
 
                         <h2 class="mt-4 text-xl font-semibold text-lightGray  dark:text-white">Mission</h2>
 
-                        <p class="mt-4 text-white dark:text-gray-400 text-sm leading-relaxed">
+                        <p class="font-mono mt-4 text-white dark:text-gray-400 text-sm leading-loose">
                             The mission of the Physics question bank is to provide a comprehensive and adaptable
                             resource for both educators and students. It covers a wide range of Physics topics and
                             difficulty levels, supporting learning through diverse questions. This resource helps
@@ -141,7 +141,7 @@
 
                         <h2 class="mt-6 text-xl font-semibold text-lightGray  dark:text-white">Features</h2>
 
-                        <p class="mt-4 text-white dark:text-gray-400 text-sm leading-relaxed">
+                        <p class="font-mono mt-4 text-white dark:text-gray-400 text-sm leading-loose">
                             This platform offers quizzes for various academic levels (high school, AP Physics,
                             college), categorized into four proficiency levels: Beginner, Intermediate,
                             Professional, and Expert. Users can earn badges based on their performance.
