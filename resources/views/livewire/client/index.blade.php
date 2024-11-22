@@ -20,7 +20,7 @@
                                 onchange="">
                                 <option value="" disabled selected>Dropdown menu</option>
                                 @foreach ($categories as $category)
-                                    <option class="font-semibold text-lg text-white rounded-xl" style="border-radius: 45px;" value="{{ $category->category }}">{{ $category->category }}</option>
+                                    <option class="font-semibold text-lg text-white rounded-xl " style="border-radius: 45px;" value="{{ $category->category }}">{{ $category->category }}</option>
                                 @endforeach
                             </select>
                         </div>
