@@ -1,7 +1,7 @@
 <div>
     <x-slot name="header">
         <div class="flex justify-between items-end">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-white leading-tight">
             {{ __('Question Category Management') }}
         </h2>
         <button type="button" class="text-right pr-2" onclick="Livewire.dispatch('openModal',{component: 'admin.question-categories.create-category'})">new</button>
