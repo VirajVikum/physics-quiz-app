@@ -1,7 +1,7 @@
 <div>
     <x-slot name="header">
         <div class="flex justify-between items-end">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-white leading-tight">
             {{ __('Questions Management') }}
         </h2>
         <div>

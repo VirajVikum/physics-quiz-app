@@ -31,19 +31,19 @@ new class extends Component
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     @role('super-admin')
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate class=" text-white mb-2 sm:mb-0 me-0 sm:me-4 font-semibold hover:text-cyan-300">
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.user-index')" :active="request()->routeIs('admin.user-index')" wire:navigate>
+                    <x-nav-link :href="route('admin.user-index')" :active="request()->routeIs('admin.user-index')" wire:navigate class=" text-white mb-2 sm:mb-0 me-0 sm:me-4 font-semibold hover:text-cyan-300">
                         {{ __('Users') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.question-index')" :active="request()->routeIs('admin.question-index')" wire:navigate>
+                    <x-nav-link :href="route('admin.question-index')" :active="request()->routeIs('admin.question-index')" wire:navigate class=" text-white mb-2 sm:mb-0 me-0 sm:me-4 font-semibold hover:text-cyan-300">
                         {{ __('Questions') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.question-categories')" :active="request()->routeIs('admin.question-categories')" wire:navigate>
+                    <x-nav-link :href="route('admin.question-categories')" :active="request()->routeIs('admin.question-categories')" wire:navigate class=" text-white mb-2 sm:mb-0 me-0 sm:me-4 font-semibold hover:text-cyan-300">
                         {{ __('Q-Categories') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('admin.question-levels')" :active="request()->routeIs('admin.question-levels')" wire:navigate>
+                    <x-nav-link :href="route('admin.question-levels')" :active="request()->routeIs('admin.question-levels')" wire:navigate class=" text-white mb-2 sm:mb-0 me-0 sm:me-4 font-semibold hover:text-cyan-300">
                         {{ __('Q-Levels') }}
                     </x-nav-link>
                     @endrole
