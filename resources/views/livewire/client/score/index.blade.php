@@ -92,6 +92,13 @@
 
                         </div>
                     </div>
+
+                    <div class="w-full bg-gray-300 rounded-lg overflow-hidden h-6 shadow-md">
+                        <div class="bg-gradient-to-r from-[#65effb] to-[#073545] h-full flex items-center justify-center text-white font-bold animate-pulse" style="width: 50%;">
+                            50%
+                        </div>
+                    </div>
+                    
                     
                     
 

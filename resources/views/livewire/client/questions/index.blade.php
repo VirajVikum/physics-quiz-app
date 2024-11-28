@@ -161,7 +161,7 @@
                     <div class="pl-2 pt-2">
                         @if ($showResult)
 
-                            <button type="button"
+                            <button type="button" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
                                 wire:click="$dispatch('openModal', { component: 'client.questions.result-modal', arguments: {result: {{ $result }}} })">Show Results</button>
                         @else
                         <button 
