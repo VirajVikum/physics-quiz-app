@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Client\Questions;
 
+use App\Models\ClientActivityDetail;
 use App\Models\Question;
 use Livewire\Component;
 
@@ -59,6 +60,18 @@ class Index extends Component
             $this->errorMessage = null; // Clear any previous error
             $this->result=($this->correctAnswersCount/ $this->questionCount)*100;
             $this->showResult=true;
+
+            $data = [
+                'client_id' => auth()->id(),
+                'type' => 'Quiz',
+                'level' => $this->level,
+                'category' => $this->category,
+                'sub_category' => $this->sub_category,
+                'marks' => $this->result,
+            ];
+    
+            // Create the record
+            $activityDetail = ClientActivityDetail::create($data);
           
             // Code to show the results
         } else {
