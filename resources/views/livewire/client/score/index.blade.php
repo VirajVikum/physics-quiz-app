@@ -146,6 +146,14 @@
                     </section>
                     
 
+                    <!-- Section Title -->
+                    <div class="text-center m-8">
+                        <h2 class="text-3xl font-bold text-gray-800">Player Activities</h2>
+                        <p class="text-gray-600 mt-2">A showcase of the milestones and accomplishments throughout their journey.</p>
+                    </div>
+
+                    <livewire:client-activity-details-table />
+
 
                 </div>
             </div>
