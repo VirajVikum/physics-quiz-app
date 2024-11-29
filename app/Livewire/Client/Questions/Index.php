@@ -32,6 +32,7 @@ class Index extends Component
         $this->level= $lvl;
 
         $this->questions = Question::where('category', $this->category)
+        ->where('type', 'Quiz')
         ->where('level', $this->level)
         ->where('sub_category', $this->sub_category)
         ->inRandomOrder()

@@ -43,13 +43,14 @@ class BulkUpload extends ModalComponent
         foreach (array_slice($sheetData, 1) as $row) {
             if (!Question::where('question', $row[0])->exists()) {
             Question::create([
-                'question' => $row[0], // Adjust according to your column setup
-                'option1' => $row[1],
-                'option2' => $row[2],
-                'option3' => $row[3],
-                'option4' => $row[4],
-                'option5' => $row[5],
-                'answer' => $row[6],
+                'type' => $row[0], // Adjust according to your column setup
+                'question' => $row[1], // Adjust according to your column setup
+                'option1' => $row[2],
+                'option2' => $row[3],
+                'option3' => $row[4],
+                'option4' => $row[5],
+                'option5' => $row[6],
+                'answer' => $row[7],
                 'category' => $this->selectedCategory,
                 'sub_category' => $this->selectedSubcategory,
                 'level' => $this->selectedLevel,

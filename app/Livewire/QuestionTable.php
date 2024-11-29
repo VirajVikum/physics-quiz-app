@@ -46,6 +46,7 @@ final class QuestionTable extends PowerGridComponent
             ->add('option4')
             ->add('option5')
             ->add('answer')
+            ->add('type')
             ->add('level')
             ->add('category')
             ->add('sub_category')
@@ -82,6 +83,10 @@ final class QuestionTable extends PowerGridComponent
             //     ->searchable(),
 
             Column::make('Answer', 'answer')
+                ->sortable()
+                ->searchable(),
+
+            Column::make('Type', 'type')
                 ->sortable()
                 ->searchable(),
 
@@ -136,7 +141,7 @@ final class QuestionTable extends PowerGridComponent
                 ->slot('Edit: '.$row->id)
                 ->id()
                 ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
-                ->openModal('admin.questions.create-question', ['isEdit' => true, 'questionId' => $row->id, 'question'=> $row->question, 'option1'=> $row->option1, 'option2'=> $row->option2, 'option3'=> $row->option3, 'option4'=> $row->option4, 'option5'=> $row->option5, 'answer'=> $row->answer, 'selectedLevel'=> $row->level, 'selectedCategory'=> $row->category, 'selectedSubcategory'=> $row->sub_category]),
+                ->openModal('admin.questions.create-question', ['isEdit' => true, 'questionId' => $row->id, 'question'=> $row->question, 'option1'=> $row->option1, 'option2'=> $row->option2, 'option3'=> $row->option3, 'option4'=> $row->option4, 'option5'=> $row->option5, 'answer'=> $row->answer, 'selectedLevel'=> $row->level, 'selectedType'=> $row->type, 'selectedCategory'=> $row->category, 'selectedSubcategory'=> $row->sub_category]),
         ];
     }
 
