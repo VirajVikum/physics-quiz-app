@@ -11,20 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('questions', function (Blueprint $table) {
+        Schema::create('client_achievements', function (Blueprint $table) {
             $table->id();
-            $table->text('question');
-            $table->text('option1');
-            $table->text('option2');
-            $table->text('option3');
-            $table->text('option4');
-            $table->text('option5');
-            $table->text('answer');
+            $table->unsignedBigInteger('client_id');
             $table->string('level');
-            $table->string('type');
             $table->string('category');
             $table->string('sub_category');
-            $table->integer('delete_status')->default(0);
+            $table->integer('marks');
+            $table->string('grade');
             $table->timestamps();
         });
     }
@@ -34,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('questions');
+        Schema::dropIfExists('client_achievements');
     }
 };

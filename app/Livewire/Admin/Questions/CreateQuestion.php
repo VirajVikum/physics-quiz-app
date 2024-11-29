@@ -13,6 +13,7 @@ class CreateQuestion extends ModalComponent
     public $isEdit = false;
     public $question, $questionId, $option1, $option2, $option3, $option4, $option5, $answer;
     public $categories, $levels;
+    public $selectedType = '';
     public $selectedLevel = '';
     public $selectedCategory = '';
     public $selectedSubcategory = '';
@@ -28,6 +29,7 @@ class CreateQuestion extends ModalComponent
         'answer' => 'required',
         'selectedCategory' => 'required',
         'selectedLevel' => 'required',
+        'selectedType' => 'required',
         'selectedSubcategory' => 'required',
     ];
 
@@ -71,6 +73,7 @@ class CreateQuestion extends ModalComponent
             'category' => $this->selectedCategory,
             'sub_category' => $this->selectedSubcategory,
             'level' => $this->selectedLevel,
+            'type' => $this->selectedType,
         ]);
 
         $this->closeModal();
@@ -80,7 +83,7 @@ class CreateQuestion extends ModalComponent
     public function update()
     {
 
-        $validatedData = $this->validate();
+        // $validatedData = $this->validate();
         $question = Question::findOrFail($this->questionId);
         $question->update([
             'question' => $this->question,
@@ -93,6 +96,7 @@ class CreateQuestion extends ModalComponent
             'category' => $this->selectedCategory,
             'sub_category' => $this->selectedSubcategory,
             'level' => $this->selectedLevel,
+            'type' => $this->selectedType,
         ]);
 
         $this->closeModal();
