@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Livewire\Client\Questions;
+namespace App\Livewire\Client\Exam;
 
+use Livewire\Component;
 use App\Models\ClientActivityDetail;
 use App\Models\Question;
-use Livewire\Component;
 
 class Index extends Component
 {
@@ -93,6 +93,6 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.client.questions.index')->layout('layouts.app');
+        return view('livewire.client.exam.index')->layout('layouts.app');
     }
 }
