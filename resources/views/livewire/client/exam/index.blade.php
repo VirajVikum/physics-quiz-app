@@ -8,31 +8,7 @@
                 </h2>
             </div>
 
-            <div>
-                @if ($MaxQuizResult >= 55)
-                <a
-                        href="{{ route('client.exam-index', ['cat' => $category, 'lvl' => $level, 'sub' => $sub_category]) }}">
-                    <!-- Clickable button -->
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        Exam
-                    </button>
-                </a>
-                @else
-                    <!-- Unclickable button with lock icon -->
-                    
-                        <button class="bg-gray-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed"
-                            disabled>
-                            <svg class="w-5 h-5 inline-block mr-2" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 15v2m4-6h.01M16 17a4 4 0 01-8 0m8 0H8m8 0h-8m5-10a5 5 0 00-10 0v2m10-2a5 5 0 00-5 5v2m0-7h10v2" />
-                            </svg>
-                            Exam
-                        </button>
-                    
-                @endif
-
-            </div>
+            
         </div>
     </x-slot>
 
@@ -40,13 +16,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 ">
-                    <div>
-                        @if ($MaxQuizResult <= 55)
-                            <h3 class= "underline">Require more than 55 test marks to unlock the Exam</h3>
-                        @endif
-                    </div>
-
-
+                    
                     @foreach ($questions as $question)
                         <div class=" bg-blue-100 m-2 rounded-md p-2">
                             <h1 class=" font-bold md:text-xl sm:text-sm lg:text-xl">{{ $loop->iteration }}.
@@ -197,7 +167,7 @@
 
                             <button type="button"
                                 class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
-                                wire:click="$dispatch('openModal', { component: 'client.questions.result-modal', arguments: {result: {{ $result }}} })">Show
+                                wire:click="$dispatch('openModal', { component: 'client.exam.result-modal', arguments: {result: {{ $result }}} })">Show
                                 Results</button>
                         @else
                             <button wire:click="showResults"

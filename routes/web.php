@@ -4,6 +4,7 @@ use App\Livewire\Admin\QuestionCategories\Index as Qcategories;
 use App\Livewire\Admin\QuestionLevels\Index as Qlevels;
 use App\Livewire\Admin\Questions\Index as QuestionIndex;
 use App\Livewire\Admin\Users\Index as UserIndex;
+use App\Livewire\Client\Exam\Index as ClientExamIndex;
 use App\Livewire\Client\Questions\Index as ClientQuestionIndex;
 use App\Livewire\Client\Score\Index as ClientScoreIndex;
 use Illuminate\Support\Facades\Route;
@@ -41,5 +42,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 Route::prefix('client')->name('client.')->group(function (){
     Route::get('/questions/{cat}/{lvl}/{sub}',ClientQuestionIndex::class,)->name('question-index');
+    Route::get('/exam/{cat}/{lvl}/{sub}',ClientExamIndex::class,)->name('exam-index');
     Route::get('/score',ClientScoreIndex::class,)->name('score-index');
 });
