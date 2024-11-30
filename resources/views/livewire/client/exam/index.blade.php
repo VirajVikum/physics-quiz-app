@@ -4,7 +4,7 @@
             <div>
                 <h2 class="font-semibold text-xl text-white leading-tight">
                     {{ $category }} --->
-                    {{ $sub_category }}
+                    {{ $sub_category }} [Examination Test]
                 </h2>
             </div>
 

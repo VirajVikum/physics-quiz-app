@@ -53,7 +53,7 @@ new class extends Component
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link :href="route('client.score-index')" :active="request()->routeIs('client.score-index')" wire:navigate class=" text-white mb-2 sm:mb-0 me-0 sm:me-4 font-semibold hover:text-cyan-300">
-                        {{ __('Score Card') }}
+                        {{ __('Profile') }}
                     </x-nav-link>
 
                     @endrole
@@ -77,7 +77,7 @@ new class extends Component
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile')" wire:navigate>
-                            {{ __('Profile') }}
+                            {{ __('Settings') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -118,7 +118,7 @@ new class extends Component
                 :active="request()->routeIs('client.score-index')" 
                 :class="request()->routeIs('client.score-index') ? 'text-black' : 'text-white'" 
                 wire:navigate>
-                {{ __('Score Card') }}
+                {{ __('Profile') }}
             </x-responsive-nav-link>
         </div>
         
@@ -132,7 +132,7 @@ new class extends Component
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile')" wire:navigate>
-                    {{ __('Profile') }}
+                    {{ __('Settings') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
