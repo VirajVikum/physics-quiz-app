@@ -8,7 +8,12 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
+                <div class="p-6 text-gray-900 ">
+
+                    <div class="text-center mb-8">
+                        <h2 class="text-3xl font-bold text-gray-800">Your Badge Collection</h2>
+                        <p class="text-gray-600 mt-2">Achievement Badges: Unlock Your Journey to Excellence.</p>
+                    </div>
 
                     <div class="flex flex-wrap gap-4 p-6 bg-gray-100 rounded-lg shadow-lg justify-center">
                         <!-- Bronze Badge -->
@@ -34,11 +39,13 @@
                                     </svg>
                                     <span class="mt-1 text-sm text-white font-semibold">Locked</span>
                                 </div>
+
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black bg-opacity-60 text-white font-semibold p-2 rounded-lg">
+                                    Unlock at 17%
+                                </div>
                             @endif
 
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black bg-opacity-60 text-white font-semibold p-2 rounded-lg">
-                                Unlock at 17%
-                            </div>
+                            
                         </div>
 
 
@@ -64,11 +71,13 @@
                                     </svg>
                                     <span class="mt-1 text-sm text-white font-semibold">Locked</span>
                                 </div>
+
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black bg-opacity-60 text-white font-semibold p-2 rounded-lg">
+                                    Unlock at 33%
+                                </div>
                             @endif
 
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black bg-opacity-60 text-white font-semibold p-2 rounded-lg">
-                                Unlock at 33%
-                            </div>
+                            
 
                         </div>
 
@@ -94,11 +103,13 @@
                                     </svg>
                                     <span class="mt-1 text-sm text-white font-semibold">Locked</span>
                                 </div>
+
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black bg-opacity-60 text-white font-semibold p-2 rounded-lg">
+                                    Unlock at 50%
+                                </div>
                             @endif
 
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black bg-opacity-60 text-white font-semibold p-2 rounded-lg">
-                                Unlock at 50%
-                            </div>
+                            
 
                         </div>
 
@@ -124,11 +135,13 @@
                                     </svg>
                                     <span class="mt-1 text-sm text-white font-semibold">Locked</span>
                                 </div>
+
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black bg-opacity-60 text-white font-semibold p-2 rounded-lg">
+                                    Unlock at 67%
+                                </div>
                             @endif
 
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black bg-opacity-60 text-white font-semibold p-2 rounded-lg">
-                                Unlock at 67%
-                            </div>
+                            
 
                         </div>
 
@@ -153,11 +166,13 @@
                                     </svg>
                                     <span class="mt-1 text-sm text-white font-semibold">Locked</span>
                                 </div>
+
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black bg-opacity-60 text-white font-semibold p-2 rounded-lg">
+                                    Unlock at 83%
+                                </div>
                             @endif
 
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black bg-opacity-60 text-white font-semibold p-2 rounded-lg">
-                                Unlock at 83%
-                            </div>
+                            
 
                         </div>
 
@@ -182,11 +197,13 @@
                                     </svg>
                                     <span class="mt-1 text-sm text-white font-semibold">Locked</span>
                                 </div>
+
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black bg-opacity-60 text-white font-semibold p-2 rounded-lg">
+                                    Unlock at 99%
+                                </div>
                             @endif
 
-                            <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black bg-opacity-60 text-white font-semibold p-2 rounded-lg">
-                                Unlock at 99%
-                            </div>
+                            
 
                         </div>
                     </div>
@@ -212,9 +229,28 @@
                             </div>
 
                             <!-- Achievements Grid -->
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 overflow-y-auto max-h-[400px]">
+
+                                @foreach ($achievements as $achievement )                                    
+                                
+                                <div class="bg-gradient-to-r from-blue-100 to-blue-50 shadow-md rounded-lg p-3">
+                                    
+                                    <h3 class="text-xl font-semibold text-gray-800">
+                                        @if($achievement->grade == 'A')
+                                        🏆
+                                        @elseif($achievement->grade == 'B')
+                                        🥇
+                                        @elseif($achievement->grade == 'C')
+                                        🎖️
+                                        @endif
+                                        {{$achievement->category}}->{{$achievement->sub_category}}->{{$achievement->level}} Level</h3>
+                                    <p class="text-gray-600 mt-2">Completed with {{$achievement->grade}} grade with {{$achievement->marks}}% marks.</p>
+                                </div>
+
+                                @endforeach
+
                                 <!-- Achievement Card -->
-                                <div class="bg-white shadow-md rounded-lg p-6">
+                                {{-- <div class="bg-white shadow-md rounded-lg p-6">
                                     <div
                                         class="flex items-center justify-center bg-indigo-500 text-white h-12 w-12 rounded-full mb-4">
                                         🏆
@@ -222,10 +258,10 @@
                                     <h3 class="text-xl font-semibold text-gray-800">A pass</h3>
                                     <p class="text-gray-600 mt-2">Won the Most Valuable Player award in 2023 for
                                         outstanding performance.</p>
-                                </div>
+                                </div> --}}
 
                                 <!-- Achievement Card -->
-                                <div class="bg-white shadow-md rounded-lg p-6">
+                                {{-- <div class="bg-white shadow-md rounded-lg p-6">
                                     <div
                                         class="flex items-center justify-center bg-green-500 text-white h-12 w-12 rounded-full mb-4">
                                         🥇
@@ -233,10 +269,10 @@
                                     <h3 class="text-xl font-semibold text-gray-800">B pass</h3>
                                     <p class="text-gray-600 mt-2">Secured the gold medal in the National Championship,
                                         2022.</p>
-                                </div>
+                                </div> --}}
 
                                 <!-- Achievement Card -->
-                                <div class="bg-white shadow-md rounded-lg p-6">
+                                {{-- <div class="bg-white shadow-md rounded-lg p-6">
                                     <div
                                         class="flex items-center justify-center bg-yellow-500 text-white h-12 w-12 rounded-full mb-4">
                                         🎖️
@@ -244,7 +280,7 @@
                                     <h3 class="text-xl font-semibold text-gray-800">C pass</h3>
                                     <p class="text-gray-600 mt-2">Achieved the top scorer award in the Premier League,
                                         2021.</p>
-                                </div>
+                                </div> --}}
 
                                 <!-- Add more cards as needed -->
                             </div>
