@@ -9,6 +9,7 @@ use Livewire\Component;
 class Index extends Component
 {
     public $completedPercentage;
+    public $achievements;
 
     public function mount()
     {
@@ -24,6 +25,8 @@ class Index extends Component
     ->count();
 
     $this->completedPercentage = floor(($completedCount / $totalSubCategories) * 100);
+
+    $this->achievements = ClientAchievement::where('client_id' , auth()->id())->get();
 
 }
 
