@@ -51,9 +51,9 @@ class BulkUpload extends ModalComponent
                 'option4' => $row[5],
                 'option5' => $row[6],
                 'answer' => $row[7],
-                'category' => $this->selectedCategory,
-                'sub_category' => $this->selectedSubcategory,
-                'level' => $this->selectedLevel,
+                'category' => $row[8],
+                'sub_category' => $row[9],
+                'level' => $row[10],
             ]);
         }
         }
