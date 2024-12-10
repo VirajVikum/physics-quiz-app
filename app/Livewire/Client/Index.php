@@ -2,8 +2,10 @@
 
 namespace App\Livewire\Client;
 
+use App\Models\ClientActivityDetail;
 use App\Models\QuestionCategory;
 use App\Models\QuestionLevel;
+use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use PhpOffice\PhpSpreadsheet\Calculation\Category;
 
@@ -17,6 +19,8 @@ class Index extends Component
     public $levels;
     public $selectedLevel;
 
+    public $marks;
+
     public function mount()
     {
         $this->levels = QuestionLevel::where('delete_status', 0)->get();
@@ -25,6 +29,7 @@ class Index extends Component
         $this->categories = QuestionCategory::where('delete_status', 0)->get();
         $this->selectedCategory = QuestionCategory::where('delete_status', 0)->first()->category;        
         $this->randomImageNumber=rand(1, 17);
+
 
         if ($this->selectedCategory) {
             $category = QuestionCategory::where('category', $this->selectedCategory)->first();
@@ -38,6 +43,7 @@ class Index extends Component
                 $this->sub_categories = [];
             }
         }
+
     }
 
     // public function updated($selectedLevel)
@@ -50,8 +56,11 @@ class Index extends Component
         // dd('ghh');
         $this->randomImageNumber=rand(1, 17);
 
+
         // Fetch the sub_category data from the QuestionCategory model
         $category = QuestionCategory::where('category', $this->selectedCategory)->first();
+
+        
 
         // Check if the category was found and if the sub_category data is available
         if ($category && $category->sub_categories) {
@@ -61,10 +70,20 @@ class Index extends Component
             // Handle the case where no sub_categories are found
             $this->sub_categories = [];
         }
+
+        
     }
 
     public function render()
     {
+        $this->marks = ClientActivityDetail::where('client_id', auth()->id())
+        ->where('type', 'Quiz')
+        ->where('level', $this->selectedLevel)
+        ->where('category', $this->selectedCategory)
+        ->select('sub_category', DB::raw('MAX(marks) as max_marks'))
+        ->groupBy('sub_category')
+        ->get();
+
         return view('livewire.client.index');
     }
 }
