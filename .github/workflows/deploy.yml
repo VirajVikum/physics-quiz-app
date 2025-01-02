@@ -1,0 +1,74 @@
+name: Deploy Laravel App
+
+on:
+  push:
+    branches:
+      - main # Trigger deployment only on pushes to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the repository
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    # Step 2: Set up PHP
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1' # Match your Laravel PHP version
+        # extensions: mbstring, intl, bcmath, curl, dom, mysql
+        # tools: composer
+
+    # Step 3: Install dependencies
+    - name: Install Dependencies
+      run: |
+        composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
+
+    # Install node js    
+    - name: Install Node.js
+          uses: actions/setup-node@v3
+          with:
+            node-version: '18'
+
+
+    - name: Install NPM Dependencies
+          run: npm run build
+
+
+    - name: Synchronize Files To Server 
+          uses: easingthemes/ssh-deploy@v2.1.5
+          env:      
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SOURCE: "."
+          REMOTE_HOST: ${{ secrets.YPS_HOST }}
+          REMOTE_USER: ${{ secrets.YPS_USER }}
+          TARGET: "/files/public_html/"
+
+
+    # Step 4: Deploy to Hostinger via SSH
+    - name: Run Remort/Artisan Commands
+      uses: appleboy/ssh-action@v0.1.6
+      with:
+        host: ${{ secrets.HOSTINGER_HOST }}
+        username: ${{ secrets.HOSTINGER_USER }}
+        key: ${{ secrets.HOSTINGER_SSH_KEY }}
+        port: 22
+        script: |
+          cd /home/u179764972/public_html # Replace with your Hostinger project path
+          git pull origin main
+          composer install --no-dev --optimize-autoloader
+          php artisan migrate --force
+          php artisan config:cache
+          php artisan route:cache
+          php artisan view:cache
+          php artisan storage:link
+          chmod -R 775 storage bootstrap/cache
+          chown -R www-data:www-data storage bootstrap/cache
+
+    # Step 5: Verify Deployment
+    - name: Verify Deployment
+      run: |
+        curl -Is https://phypat.com | head -n 1
