@@ -19,37 +19,38 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.1' # Match your Laravel PHP version
-        # extensions: mbstring, intl, bcmath, curl, dom, mysql
-        # tools: composer
 
     # Step 3: Install dependencies
     - name: Install Dependencies
       run: |
         composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
 
-    # Install node js    
+    # Step 4: Install Node.js
     - name: Install Node.js
-          uses: actions/setup-node@v3
-          with:
-            node-version: '18'
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
 
-
+    # Step 5: Install NPM Dependencies
     - name: Install NPM Dependencies
-          run: npm run build
+      run: npm install
 
+    # Step 6: Build Frontend Assets
+    - name: Build Frontend Assets
+      run: npm run build
 
-    - name: Synchronize Files To Server 
-          uses: easingthemes/ssh-deploy@v2.1.5
-          env:      
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          SOURCE: "."
-          REMOTE_HOST: ${{ secrets.YPS_HOST }}
-          REMOTE_USER: ${{ secrets.YPS_USER }}
-          TARGET: "/files/public_html/"
+    # Step 7: Synchronize Files To Server
+    - name: Synchronize Files To Server
+      uses: easingthemes/ssh-deploy@v2.1.5
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        SOURCE: "."
+        REMOTE_HOST: ${{ secrets.YPS_HOST }}
+        REMOTE_USER: ${{ secrets.YPS_USER }}
+        TARGET: "/files/public_html/"
 
-
-    # Step 4: Deploy to Hostinger via SSH
-    - name: Run Remort/Artisan Commands
+    # Step 8: Deploy to Hostinger via SSH
+    - name: Run Remote Artisan Commands
       uses: appleboy/ssh-action@v0.1.6
       with:
         host: ${{ secrets.HOSTINGER_HOST }}
@@ -68,7 +69,7 @@ jobs:
           chmod -R 775 storage bootstrap/cache
           chown -R www-data:www-data storage bootstrap/cache
 
-    # Step 5: Verify Deployment
+    # Step 9: Verify Deployment
     - name: Verify Deployment
       run: |
         curl -Is https://phypat.com | head -n 1
