@@ -21,8 +21,8 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          REMOTE_PORT: ${{ secrets.REMOTE_PORT || 22 }}
         with:
           source: "." # Directory to deploy (current directory in this case)
-          target: "/path/to/your/target/directory" # Replace with the target directory on your server
-          rm: true # Remove files on the server not in the source directory (optional)
+          target: "/home/u179764972/public_html" # Replace with the target directory on your server
           args: "-rltgoDzvO" # Additional rsync options (optional)
