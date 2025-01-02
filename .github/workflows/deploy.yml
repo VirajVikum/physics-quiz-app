@@ -18,7 +18,9 @@ jobs:
     - name: Set up PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.1' # Match your Laravel PHP version
+        php-version: '8.2' # Updated to match dependencies
+        extensions: mbstring, intl, bcmath, curl, dom, mysql
+        tools: composer
 
     # Step 3: Install dependencies
     - name: Install Dependencies
@@ -33,14 +35,14 @@ jobs:
 
     # Step 5: Install NPM Dependencies
     - name: Install NPM Dependencies
-      run: npm install
+      run: npm ci
 
     # Step 6: Build Frontend Assets
     - name: Build Frontend Assets
       run: npm run build
 
-    # Step 7: Synchronize Files To Server
-    - name: Synchronize Files To Server
+    # Step 7: Synchronize Files to Server
+    - name: Synchronize Files to Server
       uses: easingthemes/ssh-deploy@v2.1.5
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -49,7 +51,7 @@ jobs:
         REMOTE_USER: ${{ secrets.YPS_USER }}
         TARGET: "/files/public_html/"
 
-    # Step 8: Deploy to Hostinger via SSH
+    # Step 8: Run Remote Artisan Commands
     - name: Run Remote Artisan Commands
       uses: appleboy/ssh-action@v0.1.6
       with:
