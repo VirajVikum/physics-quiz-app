@@ -1,77 +1,28 @@
-name: Deploy Laravel App
+name: Deploy to Server
 
 on:
   push:
     branches:
-      - main # Trigger deployment only on pushes to the main branch
+      - main # Adjust this branch name as per your requirements
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    # Step 1: Checkout the repository
-    - name: Checkout Code
-      uses: actions/checkout@v3
+      # Step 1: Checkout the repository
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-    # Step 2: Set up PHP
-    - name: Set up PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '8.2' # Updated to match dependencies
-        extensions: mbstring, intl, bcmath, curl, dom, mysql
-        tools: composer
-
-    # Step 3: Install dependencies
-    - name: Install Dependencies
-      run: |
-        composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
-
-    # Step 4: Install Node.js
-    - name: Install Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
-
-    # Step 5: Install NPM Dependencies
-    - name: Install NPM Dependencies
-      run: npm ci
-
-    # Step 6: Build Frontend Assets
-    - name: Build Frontend Assets
-      run: npm run build
-
-    # Step 7: Synchronize Files to Server
-    - name: Synchronize Files to Server
-      uses: easingthemes/ssh-deploy@v2.1.5
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        SOURCE: "."
-        REMOTE_HOST: ${{ secrets.YPS_HOST }}
-        REMOTE_USER: ${{ secrets.YPS_USER }}
-        TARGET: "/files/public_html/"
-
-    # Step 8: Run Remote Artisan Commands
-    - name: Run Remote Artisan Commands
-      uses: appleboy/ssh-action@v0.1.6
-      with:
-        host: ${{ secrets.HOSTINGER_HOST }}
-        username: ${{ secrets.HOSTINGER_USER }}
-        key: ${{ secrets.HOSTINGER_SSH_KEY }}
-        port: 22
-        script: |
-          cd /home/u179764972/public_html # Replace with your Hostinger project path
-          git pull origin main
-          composer install --no-dev --optimize-autoloader
-          php artisan migrate --force
-          php artisan config:cache
-          php artisan route:cache
-          php artisan view:cache
-          php artisan storage:link
-          chmod -R 775 storage bootstrap/cache
-          chown -R www-data:www-data storage bootstrap/cache
-
-    # Step 9: Verify Deployment
-    - name: Verify Deployment
-      run: |
-        curl -Is https://phypat.com | head -n 1
+      # Step 2: Deploy to the server
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@v2.1.5
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+        with:
+          source: "." # Directory to deploy (current directory in this case)
+          target: "/path/to/your/target/directory" # Replace with the target directory on your server
+          rm: true # Remove files on the server not in the source directory (optional)
+          args: "-rltgoDzvO" # Additional rsync options (optional)
