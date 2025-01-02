@@ -3,26 +3,29 @@ name: Deploy to Server
 on:
   push:
     branches:
-      - main # Adjust this branch name as per your requirements
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repository
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      # Step 2: Deploy to the server
+      - name: Add Server to Known Hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p 65002 195.35.39.203 >> ~/.ssh/known_hosts
+
       - name: Deploy to Server
         uses: easingthemes/ssh-deploy@v2.1.5
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-          REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          REMOTE_PORT: ${{ secrets.REMOTE_PORT || 22 }}
+          REMOTE_HOST: 195.35.39.203
+          REMOTE_USER: u179764972
+          REMOTE_PORT: 65002
         with:
-          source: "." # Directory to deploy (current directory in this case)
-          target: "/home/u179764972/public_html" # Replace with the target directory on your server
-          args: "-rltgoDzvO" # Additional rsync options (optional)
+          source: "."
+          target: "/home/u179764972/public_html"
+          args: "-rltgoDzvO --verbose"
