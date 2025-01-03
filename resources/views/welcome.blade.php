@@ -5,7 +5,53 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Physics Qapp</title>
+    <meta name="description"
+        content="Test your knowledge with our engaging physics quiz. Explore questions from mechanics, electricity, thermodynamics, and more!">
+    <meta name="keywords"
+        content="physics quiz, physics questions, science quiz, mechanics quiz, thermodynamics, electricity quiz, test your knowledge, physics test, phypat, phypat.com">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Physics Quiz - Test Your Knowledge of Physics Concepts">
+    <meta property="og:description"
+        content="Test your knowledge with our engaging physics quiz. Explore questions from mechanics, electricity, thermodynamics, and more!">
+    <meta property="og:image" content="{{ asset('images/quiz-thumbnail.jpg') }}">
+    <meta property="og:url" content="https://phypat.com">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Physics Quiz - Test Your Knowledge of Physics Concepts">
+    <meta name="twitter:description"
+        content="Test your knowledge with our engaging physics quiz. Explore questions from mechanics, electricity, thermodynamics, and more!">
+    <meta name="twitter:image" content="{{ asset('images/quiz-thumbnail.jpg') }}">
+    <meta name="twitter:url" content="https://phypat.com">
+
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Quiz",
+          "name": "Physics Quiz",
+          "description": "Test your knowledge of physics concepts with a variety of questions on mechanics, electricity, thermodynamics, and more!",
+          "url": "https://phypat.com",
+          "image": "https://phypat.com/images/quiz-thumbnail.jpg",
+          "mainEntityOfPage": "https://phypat.com/quiz",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Your Website Name",
+            "logo": "https://phypat.com/images/logo.png"
+          }
+        }
+        </script>
+
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="phypat">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#4CAF50">
+    <meta name="apple-mobile-web-app-title" content="Physics Quiz">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+
+    <title>Physics Quiz - Test Your Knowledge | Phypat</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
