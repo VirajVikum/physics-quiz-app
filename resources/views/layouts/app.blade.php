@@ -8,7 +8,7 @@
     <meta name="description"
         content="Test your knowledge with our engaging physics quiz. Explore questions from mechanics, electricity, thermodynamics, and more!">
     <meta name="keywords"
-        content="physics quiz, physics questions, science quiz, mechanics quiz, thermodynamics, electricity quiz, test your knowledge, physics test, phypat, phypat.com">
+        content="physics quiz, phypat physics quiz, pypat, physics, physics questions, science quiz, mechanics quiz, thermodynamics, electricity quiz, test your knowledge, physics test, phypat, phypat.com">
     <meta name="robots" content="index, follow">
 
     <meta property="og:type" content="website">
@@ -54,6 +54,7 @@
 
 
     <title>Physics Quiz - Test Your Knowledge | Phypat</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     @livewireStyles
 
     <!-- Fonts -->
