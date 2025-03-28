@@ -79,7 +79,7 @@
             </video>
             <div class="absolute inset-0 bg-gray-950 bg-opacity-80 flex justify-center items-center">
                 <div class="text-center text-white">
-                    <h6 class="text-lg uppercase">PHYsics PAnda Test</h6>
+                    <h6 class="text-2xl font-serif "><span class="font-semibold text-indigo-400">PHY</span>sics <span class="font-semibold text-indigo-400">PA</span>nda <span class="font-semibold text-indigo-400">T</span>est</h6>
                     <div class="flex justify-center items-center"><x-application-logo class="block h-9 w-auto fill-current text-gray-800" /></div>
                     <h2 class="text-4xl font-semibold mt-4"><em>Phypat</em> Adventures</h2>
                     <div class="mt-8">
