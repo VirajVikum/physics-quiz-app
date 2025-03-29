@@ -5,140 +5,100 @@ namespace App\Livewire;
 use App\Models\ClientActivityDetail;
 use App\Models\QuestionCategory;
 use App\Models\QuestionLevel;
-use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
-use PowerComponents\LivewirePowerGrid\Button;
-use PowerComponents\LivewirePowerGrid\Column;
-use PowerComponents\LivewirePowerGrid\Facades\Filter;
-use PowerComponents\LivewirePowerGrid\Facades\PowerGrid;
-use PowerComponents\LivewirePowerGrid\PowerGridFields;
-use PowerComponents\LivewirePowerGrid\PowerGridComponent;
+use Rappasoft\LaravelLivewireTables\DataTableComponent;
+use Rappasoft\LaravelLivewireTables\Views\Column;
+use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
 
-final class ClientActivityDetailsTable extends PowerGridComponent
+class ClientActivityDetailsTable extends DataTableComponent
 {
-    public string $tableName = 'client-activity-details-table-gzetnl-table';
+    protected $model = ClientActivityDetail::class;
 
-    public function setUp(): array
+    public function configure(): void
     {
-        $this->showCheckBox();
-
-        return [
-            PowerGrid::header()
-                ->showSearchInput(),
-            PowerGrid::footer()
-                ->showPerPage()
-                ->showRecordCount(),
-        ];
+        $this->setPrimaryKey('id');
+        $this->setSearchDebounce(500);
+        $this->setColumnSelectStatus(true);
     }
 
-    public function datasource(): Builder
+    public function query(): Builder
     {
-        return ClientActivityDetail::query()->where('client_id', auth()->id());
-    }
+        $query = ClientActivityDetail::query()->where('client_id', auth()->id());
 
-    public function relationSearch(): array
-    {
-        return [];
-    }
+        // Debugging: Dump filter values to check if they are being applied
+        // logger()->info('Filter Values:', [
+        //     'category' => $this->getFilter('category'),
+        //     'level' => $this->getFilter('level'),
+        //     'type' => $this->getFilter('type'),
+        // ]);
 
-    public function fields(): PowerGridFields
-    {
-        return PowerGrid::fields()
-            ->add('id')
-            ->add('client_id')
-            ->add('type')
-            ->add('level')
-            ->add('category')
-            ->add('sub_category')
-            ->add('marks')
-            ->add('created_at');
+        if (!empty($this->getFilter('category'))) {
+            $query->where('category', $this->getFilter('category'));
+        }
+
+        if (!empty($this->getFilter('level'))) {
+            $query->where('level', $this->getFilter('level'));
+        }
+
+        if (!empty($this->getFilter('type'))) {
+            $query->where('type', $this->getFilter('type'));
+        }
+
+        return $query;
     }
 
     public function columns(): array
     {
         return [
-            // Column::make('Id', 'id'),
-            // Column::make('Client id', 'client_id'),
-            Column::make('Type', 'type')
+            Column::make("Type", "type")
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Level', 'level')
+            Column::make("Level", "level")
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Category', 'category')
+            Column::make("Category", "category")
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Sub category', 'sub_category')
+            Column::make("Sub category", "sub_category")
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Marks', 'marks')
+            Column::make("Marks", "marks")
                 ->sortable()
                 ->searchable(),
 
-            // Column::make('Created at', 'created_at_formatted', 'created_at')
-            //     ->sortable(),
-
-            Column::make('Completed at', 'created_at')
+            Column::make("Completed at", "created_at")
                 ->sortable()
                 ->searchable(),
-
-            // Column::action('Action')
         ];
     }
 
     public function filters(): array
     {
         return [
-            Filter::select('category', 'category')
-                ->dataSource(QuestionCategory::all())
-                ->optionLabel('category')
-                ->optionValue('category'),
+            SelectFilter::make('Category')
+                ->options(QuestionCategory::pluck('category', 'category')->toArray())
+                ->filter(function (Builder $query, string $value) {
+                    $query->where('category', $value);
+                }),
 
-            Filter::select('level', 'level')
-                ->dataSource(QuestionLevel::all())
-                ->optionLabel('level')
-                ->optionValue('level'),
+            SelectFilter::make('Level')
+                ->options(QuestionLevel::pluck('level', 'level')->toArray())
+                ->filter(function (Builder $query, string $value) {
+                    $query->where('level', $value);
+                }),
 
-            Filter::select('type', 'type')
-            ->dataSource([
-                ['type' => 'Quiz', 'label' => 'Quiz'],
-                ['type' => 'Exam', 'label' => 'Exam'],
-            ])
-                ->optionLabel('type')
-                ->optionValue('type'),
+            SelectFilter::make('Type')
+                ->options([
+                    'Quiz' => 'Quiz',
+                    'Exam' => 'Exam',
+                ])
+                ->filter(function (Builder $query, string $value) {
+                    $query->where('type', $value);
+                }),
         ];
     }
-
-    #[\Livewire\Attributes\On('edit')]
-    public function edit($rowId): void
-    {
-        $this->js('alert('.$rowId.')');
-    }
-
-    // public function actions(ClientActivityDetail $row): array
-    // {
-    //     return [
-    //         Button::add('edit')
-    //             ->slot('Edit: '.$row->id)
-    //             ->id()
-    //             ->class('pg-btn-white dark:ring-pg-primary-600 dark:border-pg-primary-600 dark:hover:bg-pg-primary-700 dark:ring-offset-pg-primary-800 dark:text-pg-primary-300 dark:bg-pg-primary-700')
-    //             ->dispatch('edit', ['rowId' => $row->id])
-    //     ];
-    // }
-
-    /*
-    public function actionRules($row): array
-    {
-       return [
-            // Hide button edit for ID 1
-            Rule::button('edit')
-                ->when(fn($row) => $row->id === 1)
-                ->hide(),
-        ];
-    }
-    */
 }
